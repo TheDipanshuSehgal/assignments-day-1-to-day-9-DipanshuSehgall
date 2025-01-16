@@ -1,0 +1,47 @@
+
+#include <iostream>
+#include <vector>
+
+class Solution {
+public:
+    int lastRemaining(int n) {
+        std::vector<int> arr(n);
+        for (int i = 0; i < n; i++) {
+            arr[i] = i + 1;
+        }
+
+        bool leftToRight = true;
+        int head = 0;
+        int remaining = n;
+
+        while (remaining > 1) {
+            if (leftToRight || remaining % 2 == 1) {
+                head = (head + 1) % remaining;
+            }
+
+            remaining--;
+            leftToRight = !leftToRight;
+        }
+
+        return arr[head];
+    }
+};
+
+// Example usage
+int main() {
+    Solution solution;
+    int n = 9;
+    int result = solution.lastRemaining(n);
+
+    std::cout << "The last remaining number is: " << result << std::endl;
+
+    return 0;
+}
+
+
+OUTPUT : 
+
+The last remaining number is: 2
+
+
+=== Code Execution Successful ===

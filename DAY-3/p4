@@ -1,0 +1,35 @@
+
+#include <iostream>
+#include <vector>
+
+class Solution {
+public:
+    int findTheWinner(int n, int k) {
+        if (n == 1) {
+            return 1;
+        }
+
+        int winner = findTheWinner(n - 1, k);
+        return (winner + k - 1) % n + 1;
+    }
+};
+
+// Example usage
+int main() {
+    Solution solution;
+    int n = 5;
+    int k = 2;
+    int result = solution.findTheWinner(n, k);
+
+    std::cout << "The winner of the game is: " << result << std::endl;
+
+    return 0;
+}
+
+
+OUTPUT :
+
+The winner of the game is: 3
+
+
+=== Code Execution Successful ===

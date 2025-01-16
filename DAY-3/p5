@@ -1,0 +1,42 @@
+
+Key Observations:
+The minimum non-zero product of the numbers can be achieved by making all numbers as small as possible while ensuring they remain non-zero.
+The smallest non-zero product of the numbers in the range ([1, 2^p - 1]) is achieved by making all numbers equal to (1) except for the largest number, which will be (2^p - 1).
+The product of the numbers will be (1^{(2^p - 2)} \times (2^p - 1)), which simplifies to (2^p - 1).
+
+CODE :
+
+#include <iostream>
+
+class Solution {
+public:
+    int minNonZeroProduct(int p) {
+        const int MOD = 1e9 + 7;
+        long long maxNum = (1LL << p) - 1; // This is 2^p - 1
+        long long product = maxNum; // Start with the largest number
+
+        // Calculate the product of all numbers except the largest one
+        // which is effectively 1^(2^p - 2) = 1, so we only need to consider maxNum
+        // The result is maxNum % MOD
+        return product % MOD;
+    }
+};
+
+// Example usage
+int main() {
+    Solution solution;
+    int p = 3; // Example input
+    int result = solution.minNonZeroProduct(p);
+
+    std::cout << "The minimum non-zero product is: " << result << std::endl;
+
+    return 0;
+}
+
+
+OUTPUT : 
+
+The minimum non-zero product is: 7
+
+
+=== Code Execution Successful ===
